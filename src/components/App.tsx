@@ -1,7 +1,8 @@
 import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-const About = lazy(() => import("./About"));
-const Home = lazy(() => import("./Home"));
+const Auth = lazy(() => import("../routes/Auth"));
+const About = lazy(() => import("../routes/About"));
+const Home = lazy(() => import("../routes/Home"));
 
 const App: React.FC = () => (
   <Router>
@@ -14,9 +15,15 @@ const App: React.FC = () => (
           <li>
             <Link to="/about">About</Link>
           </li>
+          <li>
+            <Link to="/auth">Sign Up</Link>
+          </li>
         </ul>
       </nav>
       <Switch>
+        <Route path="/auth">
+          <Auth />
+        </Route>
         <Route path="/about">
           <About />
         </Route>
