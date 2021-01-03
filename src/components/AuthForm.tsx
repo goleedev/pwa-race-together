@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { authService } from '../fbase';
+import { authService } from '../FirebaseContext';
 
 const AuthForm: React.FC  = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [newAccount, setNewAccount] = useState(true);
     const [error, setError] = useState("");
-    const onChange = (event:React.ChangeEvent<HTMLInputElement>) => {
+    const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { target: { name, value }, } = event;
         if (name === "email") {
             setEmail(value);
@@ -14,7 +14,7 @@ const AuthForm: React.FC  = () => {
             setPassword(value);
         };
     };
-    const onSubmit = async (event:React.FormEvent) => {
+    const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         let data;
         try {
