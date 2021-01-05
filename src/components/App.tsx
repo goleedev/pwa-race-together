@@ -4,10 +4,10 @@ import { authService } from '../FirebaseContext';
 
 const App: React.FC = () => {
   const [init, setInit] = useState(false);
-  const [userObj, setUserObj] = useState(null);
+  const [userObj, setUserObj] = useState<any | null>(null);
 
   useEffect(() => {
-    authService.onAuthStateChanged((user: any) => {
+    authService.onAuthStateChanged((user) => {
       if (user) {
         setUserObj ({
           displayName: user.displayName,
@@ -20,7 +20,7 @@ const App: React.FC = () => {
       setInit(true);
     });
   }, []);
-  const refreshUser = () => {
+  const refreshUser: any = () => {
     const user: any = authService.currentUser;
     setUserObj ({
       displayName: user.displayName,
@@ -30,7 +30,7 @@ const App: React.FC = () => {
   };
   return (
     <>
-      {init ? <AppRouter refreshUser={refreshUser} isLoggedIn={Boolean(userObj)} userObj={userObj} /> : "Initializing..."}
+      {init ? <AppRouter /> : "Initializing..."}
     </>
   )
 }

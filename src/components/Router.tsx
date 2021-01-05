@@ -11,7 +11,6 @@ const AppRouter: React.FC = ({refreshUser, isLoggedIn, userObj}: any) => {
     return (
         <Router>
             <Suspense fallback={<div>Loading...</div>}>
-
             {isLoggedIn && <Navigation userObj={userObj} />}
             <Switch>
                 {isLoggedIn ? (
